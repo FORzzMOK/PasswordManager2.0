@@ -1,0 +1,6 @@
+﻿services:
+  passwordmanager2.0:
+    image: passwordmanager2.0
+    build:
+      context: .
+      dockerfile: PasswordManager2.0/Dockerfile

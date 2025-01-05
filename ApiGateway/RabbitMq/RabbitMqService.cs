@@ -1,8 +1,8 @@
-using RabbitMQ.Client;
 using System.Text;
 using System.Text.Json;
+using RabbitMQ.Client;
 
-namespace PasswordManager2._0.RabbitMq;
+namespace ApiGateway.RabbitMq;
 
 public interface IRabbitMqService
 {

@@ -12,7 +12,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dafd16f8-254a-423a-8bd3-e0d1018e4ff4" name="Changes" comment="MVP" />
+    <list default="true" id="dafd16f8-254a-423a-8bd3-e0d1018e4ff4" name="Changes" comment="mvp">
+      <change afterPath="$PROJECT_DIR$/ApiGateway/Controllers/UserController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ApiGateway/Controllers/WeatherForecastController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.PasswordManager2.0/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PasswordManager2.0/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ApiGateway/Models/Role.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ApiGateway/Models/Role.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ApiGateway/Models/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ApiGateway/Models/User.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ApiGateway/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ApiGateway/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ApiGateway/RabbitMq/RabbitMqService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ApiGateway/RabbitMq/RabbitMqService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ApiGateway/SwaggerServiceExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ApiGateway/SwaggerServiceExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ApiGateway/WebApplicationApiExtension.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ApiGateway/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/ApiGateway/docker-compose.yml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,11 +48,16 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/forzzmok/RiderProjects/PasswordManager2.0/ApiGateway/Models/Role.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ApiGateway/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/forzzmok/RiderProjects/PasswordManager2.0/ApiGateway/RabbitMq/RabbitMqService.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/forzzmok/RiderProjects/PasswordManager2.0/ApiGateway/SwaggerServiceExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ApiGateway/SwaggerServiceExtensions.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ApiGateway/WebApplicationApiExtension.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ApiGateway/appsettings.Development.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ApiGateway/appsettings.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/forzzmok/RiderProjects/PasswordManager2.0/PasswordStorage/ssegseges.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -66,6 +82,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -104,7 +121,7 @@
       </method>
     </configuration>
     <configuration name="PasswordManager2.0: https" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
-      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/PasswordManager2.0/PasswordManager2.0.csproj" />
+      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/ApiGateway/ApiGateway.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net8.0" />
       <option name="LAUNCH_PROFILE_NAME" value="https" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
@@ -178,7 +195,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1735938346535</updated>
-      <workItem from="1735938347694" duration="22956000" />
+      <workItem from="1735938347694" duration="31118000" />
     </task>
     <task id="LOCAL-00001" summary="MVP">
       <option name="closed" value="true" />
@@ -188,7 +205,31 @@
       <option name="project" value="LOCAL" />
       <updated>1736037016499</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="new mvp">
+      <option name="closed" value="true" />
+      <created>1736037463115</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1736037463115</updated>
+    </task>
+    <task id="LOCAL-00003" summary="mvp 2">
+      <option name="closed" value="true" />
+      <created>1736037572508</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1736037572508</updated>
+    </task>
+    <task id="LOCAL-00004" summary="mvp">
+      <option name="closed" value="true" />
+      <created>1736037626549</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1736037626549</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -222,6 +263,21 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="MVP" />
-    <option name="LAST_COMMIT_MESSAGE" value="MVP" />
+    <MESSAGE value="new mvp" />
+    <MESSAGE value="mvp 2" />
+    <MESSAGE value="mvp" />
+    <option name="LAST_COMMIT_MESSAGE" value="mvp" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <default-breakpoints>
+        <breakpoint enabled="true" type="DotNet Exception Breakpoints" />
+        <breakpoint enabled="true" type="CidrExceptionBreakpoint" />
+        <breakpoint enabled="true" type="GDSCRIPT_EXCEPTION_BP_TYPE">
+          <properties exception="GdScript Exception" />
+        </breakpoint>
+        <breakpoint enabled="true" type="javascript-exception" />
+      </default-breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

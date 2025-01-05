@@ -2,8 +2,7 @@ using ApiGateway;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using ApiGateway.SwaggerServiceExtensions;
-using PasswordManager2._0.RabbitMq;
+using ApiGateway.RabbitMq;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -35,14 +34,11 @@ builder.Services.AddSwaggerDocumentation();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwaggerDocumentation();
 }
 
-app.UseHttpsRedirection();
-
-//app.AddUserApi();
+//app.UseHttpsRedirection();
 
 app.Run();

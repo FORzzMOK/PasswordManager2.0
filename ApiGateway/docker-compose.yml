@@ -4,3 +4,12 @@ services:
     image: rabbitmq:3.10.7-management
     ports:
       - 15672:15672
+      
+  postgres:
+    image: postgres:13.3
+    environment:
+      POSTGRES_DB: "habrdb"
+      POSTGRES_USER: "habrpguser"
+      POSTGRES_PASSWORD: "pgpwd4habr"
+    ports:
+      - "5432:5432"

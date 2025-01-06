@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using ApiGateway.RabbitMq;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +13,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
+
 builder.Services.AddScoped<IRabbitMqService, RabbitMqService>();
+
+builder.Services.AddAuthorization();
 builder.Services.AddAuthentication(o =>
 {
     o.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -39,6 +44,18 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerDocumentation();
 }
 
-//app.UseHttpsRedirection();
+app.UseAuthentication();
+app.UseAuthorization();
+
+app.MapGet("/accessdenied", async (HttpContext context) =>
+{
+    context.Response.StatusCode = 403;
+    await context.Response.WriteAsync("Access Denied");
+});
+
+app.MapControllers();
+app.UseHttpsRedirection();
+
+//app.AddUserApi();
 
 app.Run();

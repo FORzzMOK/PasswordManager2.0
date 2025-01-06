@@ -20,7 +20,7 @@ public class RabbitMqService : IRabbitMqService
 
     public async Task SendMessage(string message)
     {
-        var factory = new ConnectionFactory() { HostName = "localhost" };
+        var factory = new ConnectionFactory() { HostName = "localhost", UserName = "user", Password = "password" };
         await using var connection = await factory.CreateConnectionAsync();
         await using var channel = await connection.CreateChannelAsync();
         await channel.QueueDeclareAsync(queue: "MyQueue",
@@ -30,11 +30,12 @@ public class RabbitMqService : IRabbitMqService
             arguments: null);
 
         var body = Encoding.UTF8.GetBytes(message);
-            
+        
         await channel.BasicPublishAsync<BasicProperties>(exchange: string.Empty,
             routingKey: "MyQueue",
-            basicProperties: null,
+            basicProperties: new BasicProperties(),
             body: body,
             mandatory: true);
+        
     }
 }

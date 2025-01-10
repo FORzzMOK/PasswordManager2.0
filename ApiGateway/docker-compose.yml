@@ -1,4 +1,4 @@
-version: "2.1"
+version: "3.9"
 services:
   broker:
     image: rabbitmq:3-management-alpine
@@ -26,10 +26,32 @@ services:
       - .:/home/user
       
   postgres:
-    image: postgres:13.3
+    container_name: postgres
+    image: postgres:16.6
+    restart: on-failure
     environment:
-      POSTGRES_DB: "habrdb"
-      POSTGRES_USER: "habrpguser"
-      POSTGRES_PASSWORD: "pgpwd4habr"
+      POSTGRES_DB: "postgres"
+      POSTGRES_USER: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
     ports:
-      - "5432:5432"
+      - ${KC_POSTGRES_PORT_MAPPING:-5435}:5432
+        
+  keycloak:
+    image: quay.io/keycloak/keycloak:20.0.2
+    container_name: keycloak
+    command:
+      - start --auto-build --db postgres --hostname-strict-https false --hostname-strict false --proxy edge --http-enabled true --import-realm --spi-user-profile-legacy-user-profile-read-only-attributes *_RES_ACCESS_MODE
+    environment:
+      KC_DB_URL: jdbc:postgresql://postgres:5432/postgres
+      KC_DB_USERNAME: ${POSTGRES_USER:-postgres}
+      KC_DB_PASSWORD: ${POSTGRES_USER:-postgres}
+      KC_DB_SCHEMA: public
+      KC_FEATURES: preview
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+    ports:
+      - "8282:8080"
+    depends_on:
+      - postgres
+    links:
+      - "postgres:postgres"

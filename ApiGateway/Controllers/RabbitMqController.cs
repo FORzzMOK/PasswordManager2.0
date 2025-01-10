@@ -24,7 +24,7 @@ public class RabbitMqController : Controller
     [HttpGet(nameof(TestRabbitMqController))]
     public string TestRabbitMqController()
     {
-        _mqService.SendMessage("Test RabbitMqController");
+        _mqService.SendMessage(UserController.People.FirstOrDefault());
         return "Ok";
     }
 }

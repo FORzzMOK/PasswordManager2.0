@@ -19,7 +19,7 @@ public class UserController : Controller
         _configuration = config;
     }
     
-    private static readonly IEnumerable<User> People =
+    public static readonly IEnumerable<User> People =
     [
         new() { Login = "admin@gmail.com", Password = "12345", Role = "admin" },
         new() { Login = "qwerty@gmail.com", Password = "55555", Role = "user" }

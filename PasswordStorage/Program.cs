@@ -1,6 +1,8 @@
 ﻿using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System.Text;
+using System.Text.Json;
+using ApiGateway.Models;
 
 var factory = new ConnectionFactory() { HostName = "localhost", UserName = "user", Password = "password" };
 await using var connection = await factory.CreateConnectionAsync();
@@ -12,11 +14,11 @@ await channel.QueueDeclareAsync(queue: "MyQueue",
     arguments: null);
 
 var consumer = new AsyncEventingBasicConsumer(channel);
-//var consumer = new EventingBasicConsumer(channel);
 consumer.ReceivedAsync += (model, ea) =>
 {
     var body = ea.Body.ToArray();
-    var message = Encoding.UTF8.GetString(body);
+    var result = Serializer<User>.Deserialize(body);
+    var message = JsonSerializer.Serialize(result);
     Console.WriteLine(" [x] Received {0}", message);
     return Task.CompletedTask;
 };
@@ -27,3 +29,14 @@ await channel.BasicConsumeAsync(queue: "MyQueue",
 
 Console.WriteLine(" Press [enter] to exit.");
 Console.ReadLine();
+
+public static class Serializer<T> where T : class
+{
+    public static T? Deserialize(byte[] data) 
+    {
+        var message = Encoding.UTF8.GetString(data);
+        var result = JsonSerializer.Deserialize<T>(message);
+        return result;
+    }
+}
+

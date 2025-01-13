@@ -2,9 +2,8 @@ using ApiGateway;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using ApiGateway.RabbitMq;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Mvc;
+using ApiGateway.Events;
+using Libraries;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,7 +13,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
 
-builder.Services.AddScoped<IRabbitMqService, RabbitMqService>();
+builder.Services.AddScoped<IRabbitMqService<UserEvent>, RabbitMqService<UserEvent>>();
 
 builder.Services.AddAuthorization();
 builder.Services.AddAuthentication(o =>

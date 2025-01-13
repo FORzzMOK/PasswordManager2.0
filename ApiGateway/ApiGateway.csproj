@@ -12,7 +12,6 @@
         <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.11" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.11"/>
         <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
-        <PackageReference Include="RabbitMQ.Client" Version="7.0.0" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2"/>
     </ItemGroup>
 
@@ -26,6 +25,10 @@
       <None Update="docker-compose.yml">
         <DependentUpon>Dockerfile</DependentUpon>
       </None>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Libraries \Libraries.csproj" />
     </ItemGroup>
 
 </Project>

@@ -1,18 +1,12 @@
 using System.Text;
 using System.Text.Json;
-using ApiGateway.Models;
 using RabbitMQ.Client;
 
-namespace ApiGateway.RabbitMq;
+namespace Libraries;
 
-public interface IRabbitMqService
+public class RabbitMqService<T> : IRabbitMqService<T> where T : Event
 {
-    Task SendMessage(User user);
-}
-
-public class RabbitMqService : IRabbitMqService
-{
-    public async Task SendMessage(User user)
+    public async Task SendMessage(T obj)
     {
         var factory = new ConnectionFactory() { HostName = "localhost", UserName = "user", Password = "password" };
         await using var connection = await factory.CreateConnectionAsync();
@@ -23,7 +17,7 @@ public class RabbitMqService : IRabbitMqService
             autoDelete: false,
             arguments: null);
 
-        var result = Serialize<User>(user);
+        var result = Serialize(obj);
         
         await channel.BasicPublishAsync<BasicProperties>(exchange: string.Empty,
             routingKey: "MyQueue",
@@ -33,7 +27,7 @@ public class RabbitMqService : IRabbitMqService
         
     }
     
-    private static byte[] Serialize<T>(T obj) where T : class
+    private static byte[] Serialize(T obj) 
     {
         var message = JsonSerializer.Serialize(obj);
         var result = Encoding.UTF8.GetBytes(message);

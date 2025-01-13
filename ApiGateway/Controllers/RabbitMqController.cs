@@ -1,21 +1,16 @@
+using ApiGateway.Events;
+using Libraries;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Globalization;
-using ApiGateway.Models;
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
-using ApiGateway.RabbitMq;
 
 namespace ApiGateway.Controllers;
 
 [ApiController]
 public class RabbitMqController : Controller
 {
-    private readonly IRabbitMqService _mqService;
+    private readonly IRabbitMqService<UserEvent> _mqService;
     
-    public RabbitMqController(IRabbitMqService mqService)
+    public RabbitMqController(IRabbitMqService<UserEvent> mqService)
     {
         _mqService = mqService;
     }
@@ -24,7 +19,10 @@ public class RabbitMqController : Controller
     [HttpGet(nameof(TestRabbitMqController))]
     public string TestRabbitMqController()
     {
-        _mqService.SendMessage(UserController.People.FirstOrDefault());
+        var user = UserController.People.FirstOrDefault();
+        
+        var userEvent = new UserEvent() { Login = user.Login, Password = user.Password, Role = user.Role };
+        _mqService.SendMessage(userEvent);
         return "Ok";
     }
 }

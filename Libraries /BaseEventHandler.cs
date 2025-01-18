@@ -8,7 +8,7 @@ namespace Libraries;
 
 public class BaseEventHandler<T> where T : Event
 {
-    public async Task TestMethod()
+    public async Task StartHandle()
     {
         var factory = new ConnectionFactory() { HostName = "localhost", UserName = "user", Password = "password" };
         await using var connection = await factory.CreateConnectionAsync();
@@ -24,7 +24,7 @@ public class BaseEventHandler<T> where T : Event
         {
             var body = ea.Body.ToArray();
             var result = Serializer<T>.Deserialize(body);
-            return TestMethod2(result);
+            return Handle(result);
         };
 
         await channel.BasicConsumeAsync(queue: "MyQueue",
@@ -35,7 +35,7 @@ public class BaseEventHandler<T> where T : Event
         Console.ReadLine();
     }
 
-    protected virtual Task TestMethod2(T result)
+    protected virtual Task Handle(T result)
     {
         var message = JsonSerializer.Serialize(result);
         Console.WriteLine(" [x] Received {0}", message);
